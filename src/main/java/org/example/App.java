@@ -22,7 +22,7 @@ public class App {
             switch (choice.toLowerCase()) {
                 case "1" -> inputPricesForDay(prices, input);
                 case "2" -> printMinAndMaxPrices(prices);
-                case "3" -> //sortera
+                case "3" -> //sorteraa
                 case "4" -> //bästa laddtid
                 case "e" -> {
                     System.out.println("Programmet avslutas.");
