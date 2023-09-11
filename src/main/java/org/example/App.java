@@ -9,7 +9,7 @@ public class App {
 
         while (running) {
             System.out.println("Elpriser");
-            System.out.println("========");
+            System.out.println("=======x=");
             System.out.println("1. Inmatning");
             System.out.println("2. Min, Max och Medel");
             System.out.println("3. Sortera");
