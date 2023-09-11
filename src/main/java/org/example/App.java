@@ -19,11 +19,13 @@ public class App {
 
             String choice = input.next();
 
+            //sorteraa
+            //bästa laddtid
             switch (choice.toLowerCase()) {
-                case "1" -> inputPricesForDay(prices, input);
+                case "1" -> inputPrices(prices, input);
                 case "2" -> printMinAndMaxPrices(prices);
-                case "3" -> //sorteraa
-                case "4" -> //bästa laddtid
+                case "3" -> System.out.println("sortera");
+                case "4" -> System.out.println("bästa laddtid");
                 case "e" -> {
                     System.out.println("Programmet avslutas.");
                     running = false;
@@ -35,11 +37,11 @@ public class App {
         input.close();
     }
 
-    public static void inputPricesForDay(int[] prices, Scanner input) {
+    public static void inputPrices(int[] prices, Scanner input) {
         System.out.println("Ange elpriser för dygnet (i öre per kW/h):");
 
         for (int hour = 0; hour < prices.length; hour++) {
-            System.out.print("Timme " + hour + " - " + (hour + 1) + ": ");
+            System.out.print(tim(hour) + "-" + tim(hour + 1) + ": ");
             prices[hour] = input.nextInt();
         }
 
@@ -49,24 +51,39 @@ public class App {
     public static void printMinAndMaxPrices(int[] prices) {
         int minPrice = Integer.MAX_VALUE;
         int maxPrice = Integer.MIN_VALUE;
+        int minHour = -1;
+        int maxHour = -1;
         int sum = 0;
 
-        for (int price : prices) {
+        for (int hour = 0; hour < prices.length; hour++) {
+            int price = prices[hour];
             sum += price;
 
             if (price < minPrice) {
                 minPrice = price;
+                minHour = hour;
             }
 
             if (price > maxPrice) {
                 maxPrice = price;
+                maxHour = hour;
             }
         }
 
         double averagePrice = (double) sum / prices.length;
 
-        System.out.println("Lägsta pris: " + minPrice + " öre/kW/h");
-        System.out.println("Högsta pris: " + maxPrice + " öre/kW/h");
-        System.out.println("Dygnets medelpris: " + String.format("%.2f", averagePrice) + " öre/kW/h");
+        System.out.println("Lägsta pris: " + tim(minHour) + "-" + tim(minHour + 1) + ", " + minPrice + " öre/kWh");
+        System.out.println("Högsta pris: " + tim(maxHour) + "-" + tim(maxHour + 1) + ", " + maxPrice + " öre/kWh");
+        System.out.println("Medelpris: " + String.format("%.2f", averagePrice) + " öre/kWh");
     }
+    static String tim (int timme) {
+        String tid;
+        if (timme < 10) {
+            tid = "0" + timme;
+        } else {
+            tid = "" + timme;
+        }
+        return tid;
+    }
+
 }
