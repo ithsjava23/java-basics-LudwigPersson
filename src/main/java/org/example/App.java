@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class App {
     private static final DecimalFormat df = new DecimalFormat("##");
     public static void main(String[] args) {
-        //new Locale("sv","SE");
+        Locale swedishLocale = Locale.of("sv", "SE");
+        Locale.setDefault(swedishLocale);
         Scanner input = new Scanner(System.in);
         boolean running = true;
         int[] prices = new int[24];
