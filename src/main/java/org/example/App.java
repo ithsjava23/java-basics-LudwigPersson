@@ -13,15 +13,7 @@ public class App {
         int[] prices = new int[24];
 
         while (running) {
-            System.out.println("Elpriser");
-            System.out.println("========");
-            System.out.println("1. Inmatning");
-            System.out.println("2. Min, Max och Medel");
-            System.out.println("3. Sortera");
-            System.out.println("4. Bästa Laddningstid (4h)");
-            System.out.println("e. Avsluta");
-            System.out.print("Välj ett alternativ: ");
-
+            printMenu();
             String choice = input.next();
 
             switch (choice.toLowerCase()) {
@@ -36,8 +28,17 @@ public class App {
                 default -> System.out.println("Ogiltigt val. Försök igen.");
             }
         }
-
-        //input.close();
+        input.close();
+    }
+    public static void printMenu() {
+        System.out.println("Elpriser");
+        System.out.println("========");
+        System.out.println("1. Inmatning");
+        System.out.println("2. Min, Max och Medel");
+        System.out.println("3. Sortera");
+        System.out.println("4. Bästa Laddningstid (4h)");
+        System.out.println("e. Avsluta");
+        System.out.print("Välj ett alternativ: ");
     }
 
     public static void inputPrices(int[] prices, Scanner input) {
@@ -110,9 +111,7 @@ public class App {
                     sorted = false;
 
                 }
-
             }
-
         }
         System.out.println();
         for (int i = 0; i < 24; i++) {
