@@ -26,8 +26,8 @@ public class App {
 
             switch (choice.toLowerCase()) {
                 case "1" -> inputPrices(prices, input);
-                case "2" -> printMinAndMaxPrices(prices);
-                case "3" -> sorting(prices);
+                case "2" -> displayMinMaxAndAveragePrices(prices);
+                case "3" -> sortElectricityPrices(prices);
                 case "4" -> findBestChargingTime(prices);
                 case "e" -> {
                     System.out.println("Programmet avslutas.");
@@ -51,7 +51,7 @@ public class App {
         System.out.println("Elpriser har matats in för dygnet.");
     }
 
-    public static void printMinAndMaxPrices(int[] prices) {
+    public static void displayMinMaxAndAveragePrices(int[] prices) {
         int minPrice = Integer.MAX_VALUE;
         int maxPrice = Integer.MIN_VALUE;
         int minHour = -1;
@@ -80,7 +80,7 @@ public class App {
         System.out.println("Medelpris: " + String.format("%.2f", averagePrice) + " öre/kWh");
     }
 
-    public static void sorting(int[] prices) {
+    public static void sortElectricityPrices(int[] prices) {
         float[] pricePerHour = new float[24];
         int[] time = new int[24];
 
@@ -114,16 +114,12 @@ public class App {
             }
 
         }
-
         System.out.println();
         for (int i = 0; i < 24; i++) {
             int hour = time[i];
             int nextHour = time[i] + 1;
             String formattedPrice = df.format(pricePerHour[i]);
             System.out.println(tim(hour) + "-" + tim(nextHour) + " " + formattedPrice + " öre");
-
-            
-            
         }    
     }
     public static void findBestChargingTime(int[] prices) {
