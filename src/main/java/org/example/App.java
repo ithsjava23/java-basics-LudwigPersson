@@ -142,7 +142,6 @@ public class App {
         System.out.printf(String.format("Påbörja laddning klockan %02d\n", bestStartTime, + 3));
         System.out.printf(String.format("Medelpris 4h: %.1f öre/kWh\n",averageValue));
     }
-
     static String tim(int timme) {
         String tid;
         if (timme < 10) {
